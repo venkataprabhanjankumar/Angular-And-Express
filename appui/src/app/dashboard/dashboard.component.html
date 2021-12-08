@@ -1,0 +1,7 @@
+<nav mat-tab-nav-bar [backgroundColor]="background" mat-align-tabs="center">
+  <a mat-tab-link routerLink="/profile">Profile</a>
+  <a mat-tab-link routerLink="/change_password"> Change Password </a>
+  <a mat-tab-link routerLink="/upload"> Upload Images </a>
+  <button mat-tab-link style="border: none;background: none" (click)="handle_logout($event)">Logout</button>
+  <button mat-tab-link style="border: none;background: none" (click)="handle_delete($event)">Delete Account</button>
+</nav>

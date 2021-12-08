@@ -1,0 +1,19 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+mat-form-field {
+  font-size: 16px;
+}
+.example-container{
+    width: auto;
+    min-height: 400px;
+    background: #FFF;
+    padding: 80px 500px;
+}
+

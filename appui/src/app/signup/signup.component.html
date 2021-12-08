@@ -1,0 +1,73 @@
+<nav mat-tab-nav-bar [backgroundColor]="background" mat-align-tabs="center">
+  <a mat-tab-link routerLink="/">Home</a>
+  <a mat-tab-link routerLink="/signin"> SignIn </a>
+  <a mat-tab-link routerLink="/signup"> SignUp </a>
+</nav>
+<div class="example-container">
+  <div class="form-container">
+    <p *ngIf="display_err" style="color: crimson"><span>{{err_msg}}</span></p>
+    <p *ngIf="display_success"><span style="color: limegreen">Registered Successfully back to <a routerLink="/signin" style="text-decoration: none">Login</a> </span></p>
+    <form class="example-form" [formGroup]="UserForm" method="post" (ngSubmit)="handleSubmit($event)">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput formControlName="first_name" placeholder="First Name" required>
+        <mat-hint align="start"><strong>this filed is required</strong> </mat-hint>
+        <mat-error *ngIf="UserForm.controls.first_name.invalid">
+          first name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/><br/>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="last_name" placeholder="Last Name" required>
+        <mat-hint align="start"><strong>this filed is required</strong> </mat-hint>
+        <mat-error *ngIf="UserForm.controls.last_name.invalid">
+          last name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/><br/>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput formControlName="username" placeholder="username" required>
+        <mat-hint align="start"><strong>this filed is required</strong> </mat-hint>
+        <mat-error *ngIf="UserForm.controls.username.invalid && !UserForm.hasError('required')">
+          username must be minimum 6 characters and maximum 12
+        </mat-error>
+        <mat-error *ngIf="UserForm.hasError('required')">
+          username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/><br/>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" required>
+        <mat-hint align="start"><strong>this filed is required</strong> </mat-hint>
+        <mat-error *ngIf="UserForm.controls.email.invalid && !UserForm.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="UserForm.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field><br/><br/>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="Password" required>
+        <mat-hint align="start"><strong>password must be minimum length of 6</strong> </mat-hint>
+        <mat-error *ngIf="UserForm.controls.password.invalid">
+          invalid  password
+        </mat-error>
+      </mat-form-field>
+      <br/><br/>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="cpassword" placeholder="Conform Password" required>
+        <mat-hint align="start"><strong>password must be minimum length of 6</strong> </mat-hint>
+        <mat-error *ngIf="UserForm.controls.cpassword.invalid">
+          invalid  password
+        </mat-error>
+      </mat-form-field>
+      <br/><br/>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!UserForm.valid">Submit</button>
+    </form>
+  </div>
+</div>
